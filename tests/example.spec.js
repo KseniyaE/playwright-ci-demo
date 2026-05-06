@@ -22,3 +22,10 @@ test('@smoke check page url', async ({ page }) => {
   await page.goto('https://playwright.dev/');
   await expect(page).toHaveURL(/playwright/);
 });
+
+test('@smoke check docs button visible', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Verify Docs button is visible
+  await expect(page.getByRole('link', { name: 'Docs' })).toBeVisible();
+});
