@@ -29,3 +29,13 @@ test('@smoke check docs button visible', async ({ page }) => {
   // Verify Docs button is visible
   await expect(page.getByRole('link', { name: 'Docs' })).toBeVisible();
 });
+
+test('@smoke verify docs navigation', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Click Docs button
+  await page.getByRole('link', { name: 'Docs' }).click();
+
+  // Verify user navigated to docs page
+  await expect(page).toHaveURL(/docs/);
+});
